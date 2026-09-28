@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Gixssapi"
+description = "A polished API hub and documentation portal for Gixss developers, with discoverable endpoints, copyable URLs, and interactive reference pages."
+version = "1.0.0"
+id = "artifacts/gixssapi"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18871
+
+[services.development]
+run = "pnpm --filter @workspace/gixssapi run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gixssapi", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/gixssapi/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18871"
+BASE_PATH = "/"

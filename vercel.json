@@ -1,0 +1,12 @@
+{
+  "buildCommand": "pnpm --filter @workspace/gixssapi run build",
+  "outputDirectory": "artifacts/gixssapi/dist/public",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
